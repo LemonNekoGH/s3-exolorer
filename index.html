@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="navigation"></div>
+  <div id="listing"></div>
+  <div id="app" class="font-size-16px">
+    <div class="flex">
+      <code class="flex-1">最后修改时间</code>
+      <code class="flex-1">大小</code>
+      <code class="flex-1">名称</code>
+    </div>
+    <div v-for="(item, index) in items" :key="index">
+      <div class="flex">
+        <code class="flex-1">{{ item.LastModified }}</code>
+        <code class="flex-1">{{ item.Size }}</code>
+        <code class="flex-1"><a :href="item.Url">{{ item.Key }}</a></code>
+      </div>
+    </div>
+  </div>
+
+  <!-- add jQuery - if you already have it just ignore this line -->
+  <script type="text/javascript" src="./vue3_global.js"></script>
+  <script type="text/javascript" src="./xml_parser.js"></script>
+
+  <!-- the JS variables for the listing -->
+  <script type="text/javascript">
+    var BUCKET_NAME = '';
+    var BUCKET_URL = '';
+    var S3B_ROOT_DIR = '';
+  </script>
+
+  <!-- the JS to the do the listing -->
+  <script type="text/javascript" src="./list.js"></script>
+
+  <style>
+    .flex { display: flex; }
+    .flex-1 { flex: 1 }
+    .font-size-16px { font-size: 18px; line-height: 30px; }
+  </style>
+</body>
+
+</html>
